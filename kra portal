@@ -1,0 +1,34 @@
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+
+def generate_kra_pin_front_page(name, pin, dob, gender):
+    c = canvas.Canvas("KRA_PIN_Front_Page.pdf", pagesize=letter)
+
+    # Draw KRA logo
+    c.drawString(50, 750, "KRA LOGO")
+    
+    # Title
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(50, 700, "Kenya Revenue Authority")
+    
+    # Details
+    c.setFont("Helvetica", 12)
+    c.drawString(50, 670, "Name: {}".format(name))
+    c.drawString(50, 650, "PIN: {}".format(pin))
+    c.drawString(50, 630, "Date of Birth: {}".format(dob))
+    c.drawString(50, 610, "Gender: {}".format(gender))
+    
+    # Footer
+    c.setFont("Helvetica", 10)
+    c.drawString(50, 50, "This is a sample KRA PIN front page generated using Python.")
+
+    c.save()
+    print("KRA PIN Front Page generated successfully.")
+
+# Example usage
+name = "John Doe"
+pin = "ABC123456789"
+dob = "01-Jan-1990"
+gender = "Male"
+
+generate_kra_pin_front_page(name, pin, dob, gender)
